@@ -7,8 +7,8 @@ import "normalize.css"
 const App = () => (
     <div>
         <Titles />
-        Hello World.
         <Form />
+        <Weather />
     </div>
 )
 
