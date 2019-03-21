@@ -3,7 +3,7 @@ import Titles from "../components/Titles"
 import Form from "../components/Form"
 import Weather from "../components/Weather"
 
-import "normalize.css"
+import "bootstrap/dist/css/bootstrap.min.css"
 
 class App extends React.Component {
     state = {
