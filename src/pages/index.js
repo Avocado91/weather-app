@@ -4,6 +4,7 @@ import Form from "../components/Form"
 import Weather from "../components/Weather"
 
 import "bootstrap/dist/css/bootstrap.min.css"
+import "../App.css"
 
 class App extends React.Component {
     state = {
@@ -32,8 +33,8 @@ class App extends React.Component {
         if (city && country) {
             this.setState({
                 city: response.name,
-                temp: response.main.temp,
                 country: response.sys.country,
+                temp: response.main.temp,
                 humidity: response.main.humidity,
                 description: response.weather[0].description,
                 error: "",
@@ -41,8 +42,8 @@ class App extends React.Component {
         } else
             this.setState({
                 city: undefined,
-                temp: undefined,
                 country: undefined,
+                temp: undefined,
                 humidity: undefined,
                 description: undefined,
                 error: "Please enter your city and country",
@@ -53,16 +54,28 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <Titles />
-                <Form loadWeather={this.getWeather} />
-                <Weather
-                    temp={this.state.temp}
-                    city={this.state.city}
-                    country={this.state.country}
-                    humidity={this.state.humidity}
-                    description={this.state.description}
-                    error={this.state.error}
-                />
+                <div className="wrapper">
+                    <div className="main">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-xs-5 title-container">
+                                    <Titles />
+                                </div>
+                                <div className="col-xs-7 form-container">
+                                    <Form loadWeather={this.getWeather} />
+                                    <Weather
+                                        city={this.state.city}
+                                        country={this.state.country}
+                                        temp={this.state.temp}
+                                        humidity={this.state.humidity}
+                                        description={this.state.description}
+                                        error={this.state.error}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }
